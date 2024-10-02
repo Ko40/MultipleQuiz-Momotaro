@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz: Momotaro</title>
+    <style>
+        .correct-answer {
+            color: red;
+        }
+    </style>
 </head>
 <body>
     <h1>Momotaro Quiz</h1>
@@ -16,6 +21,7 @@
         <label><input type="radio" name="q1" value="C"> C) Sie mochten keine Dorfbewohner.</label><br>
         <label><input type="radio" name="q1" value="D"> D) Sie waren neu im Dorf.</label><br>
         <label><input type="radio" name="q1" value="E"> E) Sie hatten viele Feinde.</label><br>
+        <p id="q1-correct" class="correct-answer"></p>
 
         <!-- Frage 2 -->
         <h3>Frage 2: Was fand die alte Frau im Fluss?</h3>
@@ -24,6 +30,7 @@
         <label><input type="radio" name="q2" value="C"> C) Einen großen Pfirsich.</label><br>
         <label><input type="radio" name="q2" value="D"> D) Ein Boot.</label><br>
         <label><input type="radio" name="q2" value="E"> E) Einen Stein.</label><br>
+        <p id="q2-correct" class="correct-answer"></p>
 
         <!-- Frage 3 -->
         <h3>Frage 3: Wie wurde der Junge genannt, der aus dem Pfirsich sprang?</h3>
@@ -32,6 +39,7 @@
         <label><input type="radio" name="q3" value="C"> C) Hanako.</label><br>
         <label><input type="radio" name="q3" value="D"> D) Momotaro.</label><br>
         <label><input type="radio" name="q3" value="E"> E) Saburo.</label><br>
+        <p id="q3-correct" class="correct-answer"></p>
 
         <!-- Frage 4 -->
         <h3>Frage 4: Was gaben die alten Leute Momotaro mit, bevor er gegen die Oni kämpfte?</h3>
@@ -40,6 +48,7 @@
         <label><input type="radio" name="q4" value="C"> C) Kibidango (Reiskuchen).</label><br>
         <label><input type="radio" name="q4" value="D"> D) Einen Helm.</label><br>
         <label><input type="radio" name="q4" value="E"> E) Einen Schild.</label><br>
+        <p id="q4-correct" class="correct-answer"></p>
 
         <!-- Frage 5 -->
         <h3>Frage 5: Wer schloss sich Momotaro auf seiner Reise an?</h3>
@@ -48,6 +57,7 @@
         <label><input type="radio" name="q5" value="C"> C) Ein Pferd, eine Katze und ein Elefant.</label><br>
         <label><input type="radio" name="q5" value="D"> D) Ein Hase, ein Fuchs und ein Bär.</label><br>
         <label><input type="radio" name="q5" value="E"> E) Ein Drache, ein Wolf und ein Falke.</label><br>
+        <p id="q5-correct" class="correct-answer"></p>
 
         <br>
         <input type="button" value="Ergebnisse anzeigen" onclick="calculateScore()">
@@ -71,9 +81,16 @@
 
             // Durch alle Fragen iterieren
             for (let question in correctAnswers) {
-                if (form[question].value === correctAnswers[question]) {
+                const userAnswer = form[question].value;
+                const correctAnswer = correctAnswers[question];
+
+                // Richtig oder falsch überprüfen und Punkt hinzufügen
+                if (userAnswer === correctAnswer) {
                     score++;
                 }
+
+                // Richtige Antwort anzeigen
+                document.getElementById(`${question}-correct`).innerText = `Die richtige Antwort ist: ${correctAnswer}`;
             }
 
             // Score anzeigen
