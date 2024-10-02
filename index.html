@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz: Momotaro</title>
+</head>
+<body>
+    <h1>Momotaro Quiz</h1>
+
+    <form id="quizForm">
+        <!-- Frage 1 -->
+        <h3>Frage 1: Warum waren das alte Ehepaar am Anfang der Geschichte einsam?</h3>
+        <label><input type="radio" name="q1" value="A"> A) Sie lebten weit weg vom Dorf.</label><br>
+        <label><input type="radio" name="q1" value="B"> B) Sie hatten keine Kinder.</label><br>
+        <label><input type="radio" name="q1" value="C"> C) Sie mochten keine Dorfbewohner.</label><br>
+        <label><input type="radio" name="q1" value="D"> D) Sie waren neu im Dorf.</label><br>
+        <label><input type="radio" name="q1" value="E"> E) Sie hatten viele Feinde.</label><br>
+
+        <!-- Frage 2 -->
+        <h3>Frage 2: Was fand die alte Frau im Fluss?</h3>
+        <label><input type="radio" name="q2" value="A"> A) Einen Fisch.</label><br>
+        <label><input type="radio" name="q2" value="B"> B) Ein Stück Gold.</label><br>
+        <label><input type="radio" name="q2" value="C"> C) Einen großen Pfirsich.</label><br>
+        <label><input type="radio" name="q2" value="D"> D) Ein Boot.</label><br>
+        <label><input type="radio" name="q2" value="E"> E) Einen Stein.</label><br>
+
+        <!-- Frage 3 -->
+        <h3>Frage 3: Wie wurde der Junge genannt, der aus dem Pfirsich sprang?</h3>
+        <label><input type="radio" name="q3" value="A"> A) Taro.</label><br>
+        <label><input type="radio" name="q3" value="B"> B) Kintaro.</label><br>
+        <label><input type="radio" name="q3" value="C"> C) Hanako.</label><br>
+        <label><input type="radio" name="q3" value="D"> D) Momotaro.</label><br>
+        <label><input type="radio" name="q3" value="E"> E) Saburo.</label><br>
+
+        <!-- Frage 4 -->
+        <h3>Frage 4: Was gaben die alten Leute Momotaro mit, bevor er gegen die Oni kämpfte?</h3>
+        <label><input type="radio" name="q4" value="A"> A) Ein Schwert.</label><br>
+        <label><input type="radio" name="q4" value="B"> B) Eine Rüstung.</label><br>
+        <label><input type="radio" name="q4" value="C"> C) Kibidango (Reiskuchen).</label><br>
+        <label><input type="radio" name="q4" value="D"> D) Einen Helm.</label><br>
+        <label><input type="radio" name="q4" value="E"> E) Einen Schild.</label><br>
+
+        <!-- Frage 5 -->
+        <h3>Frage 5: Wer schloss sich Momotaro auf seiner Reise an?</h3>
+        <label><input type="radio" name="q5" value="A"> A) Ein Löwe, ein Tiger und ein Adler.</label><br>
+        <label><input type="radio" name="q5" value="B"> B) Ein Hund, ein Affe und ein Fasan.</label><br>
+        <label><input type="radio" name="q5" value="C"> C) Ein Pferd, eine Katze und ein Elefant.</label><br>
+        <label><input type="radio" name="q5" value="D"> D) Ein Hase, ein Fuchs und ein Bär.</label><br>
+        <label><input type="radio" name="q5" value="E"> E) Ein Drache, ein Wolf und ein Falke.</label><br>
+
+        <br>
+        <input type="button" value="Ergebnisse anzeigen" onclick="calculateScore()">
+    </form>
+
+    <h2 id="score"></h2>
+
+    <script>
+        function calculateScore() {
+            // Richtige Antworten
+            const correctAnswers = {
+                q1: 'B',
+                q2: 'C',
+                q3: 'D',
+                q4: 'C',
+                q5: 'B'
+            };
+
+            let score = 0;
+            const form = document.forms['quizForm'];
+
+            // Durch alle Fragen iterieren
+            for (let question in correctAnswers) {
+                if (form[question].value === correctAnswers[question]) {
+                    score++;
+                }
+            }
+
+            // Score anzeigen
+            document.getElementById('score').innerText = `Dein Ergebnis: ${score}/5`;
+        }
+    </script>
+</body>
+</html>
